@@ -64,8 +64,8 @@ public class BatchConfiguration {
     public JdbcCursorItemReader<Persona> executeReader() {
         log.info("> > > executeReader...");
         return new JdbcCursorItemReaderBuilder<Persona>()
+                .name("executeReader")
                 .dataSource(this.dataSource)
-                .name("fooReader")
                 .sql("SELECT nombre, apellido, direccion, telefono FROM persona")
                 .rowMapper((rs, rowNum) -> Persona.builder()
                         .nombre(rs.getString("nombre"))
